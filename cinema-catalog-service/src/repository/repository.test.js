@@ -45,7 +45,7 @@ test('Repository getMovieSessionsByCinemaId', async () => {
   const result = await repository.getMovieSessionsByCinemaId(testMovieId, testCinemaId);
   expect(Array.isArray(result)).toBeTruthy();
   expect(result.length).toBeGreaterThan(0);
-});
+}); // stopped on page #309
 
 test('Repository Disconnect', async () => {
   const isDisconnected = repository.disconnect();
