@@ -7,13 +7,13 @@ module.exports = (app, repository) => {
 
   app.get('/cities/:city/movies', async (req, res, next) => {
     if (!req.params.city) return res.sendStatus(400);
-    const movies = await repository.getMoviesByCityId(req.params.id);
+    const movies = await repository.getMoviesByCityId(req.params.city);
     if (!movies || movies.length === 0) return res.sendStatus(404);
     res.json(movies);
   });
 
   app.get('/cities/:city/movies/:movie', async (req, res, next) => {
-    if (!req.params.city || !req.params.movies) return res.sendStatus(400);
+    if (!req.params.city || !req.params.movie) return res.sendStatus(400);
     const sessions = await repository.getMovieSessionsByCityId(req.params.movie, req.params.city);
     if (!sessions || sessions === 0) return res.sendStatus(404);
     res.json(sessions);
